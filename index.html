@@ -40,6 +40,26 @@
 @font-face { font-family:'Goldman'; src:url('Goldman/Goldman-Regular.ttf') format('truetype'); font-weight:400; font-style:normal; }
 @font-face { font-family:'Goldman'; src:url('Goldman/Goldman-Bold.ttf') format('truetype'); font-weight:700; font-style:normal; }
 
+/* Inter (Scheme E) */
+@font-face { font-family:'Inter'; src:url('Inter/Inter_18pt-Thin.ttf') format('truetype'); font-weight:100; font-style:normal; }
+@font-face { font-family:'Inter'; src:url('Inter/Inter_18pt-ThinItalic.ttf') format('truetype'); font-weight:100; font-style:italic; }
+@font-face { font-family:'Inter'; src:url('Inter/Inter_18pt-ExtraLight.ttf') format('truetype'); font-weight:200; font-style:normal; }
+@font-face { font-family:'Inter'; src:url('Inter/Inter_18pt-ExtraLightItalic.ttf') format('truetype'); font-weight:200; font-style:italic; }
+@font-face { font-family:'Inter'; src:url('Inter/Inter_18pt-Light.ttf') format('truetype'); font-weight:300; font-style:normal; }
+@font-face { font-family:'Inter'; src:url('Inter/Inter_18pt-LightItalic.ttf') format('truetype'); font-weight:300; font-style:italic; }
+@font-face { font-family:'Inter'; src:url('Inter/Inter_18pt-Regular.ttf') format('truetype'); font-weight:400; font-style:normal; }
+@font-face { font-family:'Inter'; src:url('Inter/Inter_18pt-Italic.ttf') format('truetype'); font-weight:400; font-style:italic; }
+@font-face { font-family:'Inter'; src:url('Inter/Inter_18pt-Medium.ttf') format('truetype'); font-weight:500; font-style:normal; }
+@font-face { font-family:'Inter'; src:url('Inter/Inter_18pt-MediumItalic.ttf') format('truetype'); font-weight:500; font-style:italic; }
+@font-face { font-family:'Inter'; src:url('Inter/Inter_18pt-SemiBold.ttf') format('truetype'); font-weight:600; font-style:normal; }
+@font-face { font-family:'Inter'; src:url('Inter/Inter_18pt-SemiBoldItalic.ttf') format('truetype'); font-weight:600; font-style:italic; }
+@font-face { font-family:'Inter'; src:url('Inter/Inter_18pt-Bold.ttf') format('truetype'); font-weight:700; font-style:normal; }
+@font-face { font-family:'Inter'; src:url('Inter/Inter_18pt-BoldItalic.ttf') format('truetype'); font-weight:700; font-style:italic; }
+@font-face { font-family:'Inter'; src:url('Inter/Inter_18pt-ExtraBold.ttf') format('truetype'); font-weight:800; font-style:normal; }
+@font-face { font-family:'Inter'; src:url('Inter/Inter_18pt-ExtraBoldItalic.ttf') format('truetype'); font-weight:800; font-style:italic; }
+@font-face { font-family:'Inter'; src:url('Inter/Inter_18pt-Black.ttf') format('truetype'); font-weight:900; font-style:normal; }
+@font-face { font-family:'Inter'; src:url('Inter/Inter_18pt-BlackItalic.ttf') format('truetype'); font-weight:900; font-style:italic; }
+
 /* ========== CSS Custom Properties ========== */
 :root {
   --heading-font: 'Montserrat', sans-serif;
@@ -159,6 +179,7 @@ body.scheme-1 .header-logo .logo-a { display: block; }
 body.scheme-2 .header-logo .logo-b { display: block; }
 body.scheme-3 .header-logo .logo-c { display: block; }
 body.scheme-4 .header-logo .logo-d { display: block; }
+body.scheme-5 .header-logo .logo-e { display: block; }
 
 .main-nav { display: flex; align-items: center; gap: 32px; }
 .main-nav a {
@@ -864,6 +885,12 @@ body.scheme-4 {
   --body-font: 'Goldman', sans-serif;
 }
 
+/* Scheme E — Inter */
+body.scheme-5 {
+  --heading-font: 'Inter', sans-serif;
+  --body-font: 'Inter', sans-serif;
+}
+
 /* ========== EDITABLE HIGHLIGHTS ========== */
 .editable { position: relative; }
 .editable:hover { outline: 2px dashed var(--primary-orange); outline-offset: 4px; cursor: text; }
@@ -906,6 +933,9 @@ body.scheme-4 {
   <button class="scheme-btn" onclick="switchScheme(4)" id="btn-4">
     Scheme D<span class="scheme-label">Goldman + Logo D</span>
   </button>
+  <button class="scheme-btn" onclick="switchScheme(5)" id="btn-5">
+    Scheme E<span class="scheme-label">Inter + Logo E</span>
+  </button>
   <span class="edit-hint">Click text to edit &bull; Edit fonts/logo in CSS</span>
 </div>
 
@@ -916,6 +946,7 @@ body.scheme-4 {
     <img class="logo-b" src="Scheme B logo.png" alt="HiComp Logo B">
     <img class="logo-c" src="Scheme C logo.png" alt="HiComp Logo C">
     <img class="logo-d" src="Scheme D logo.png" alt="HiComp Logo D">
+    <img class="logo-e" src="Scheme E logo.png" alt="HiComp Logo E">
   </div>
   <nav class="main-nav">
     <a href="#">About</a>
