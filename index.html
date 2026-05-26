@@ -1,0 +1,1331 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>HiComp - ONE-STOP PARTNER FOR MICROFLUIDICS</title>
+<style>
+/* ========== @font-face Declarations ========== */
+
+/* Montserrat (Scheme A) */
+@font-face { font-family:'Montserrat'; src:url('Montserrat/Montserrat-Thin.ttf') format('truetype'); font-weight:100; font-style:normal; }
+@font-face { font-family:'Montserrat'; src:url('Montserrat/Montserrat-ThinItalic.ttf') format('truetype'); font-weight:100; font-style:italic; }
+@font-face { font-family:'Montserrat'; src:url('Montserrat/Montserrat-ExtraLight.ttf') format('truetype'); font-weight:200; font-style:normal; }
+@font-face { font-family:'Montserrat'; src:url('Montserrat/Montserrat-ExtraLightItalic.ttf') format('truetype'); font-weight:200; font-style:italic; }
+@font-face { font-family:'Montserrat'; src:url('Montserrat/Montserrat-Light.ttf') format('truetype'); font-weight:300; font-style:normal; }
+@font-face { font-family:'Montserrat'; src:url('Montserrat/Montserrat-LightItalic.ttf') format('truetype'); font-weight:300; font-style:italic; }
+@font-face { font-family:'Montserrat'; src:url('Montserrat/Montserrat-Regular.ttf') format('truetype'); font-weight:400; font-style:normal; }
+@font-face { font-family:'Montserrat'; src:url('Montserrat/Montserrat-Italic.ttf') format('truetype'); font-weight:400; font-style:italic; }
+@font-face { font-family:'Montserrat'; src:url('Montserrat/Montserrat-Medium.ttf') format('truetype'); font-weight:500; font-style:normal; }
+@font-face { font-family:'Montserrat'; src:url('Montserrat/Montserrat-MediumItalic.ttf') format('truetype'); font-weight:500; font-style:italic; }
+@font-face { font-family:'Montserrat'; src:url('Montserrat/Montserrat-SemiBold.ttf') format('truetype'); font-weight:600; font-style:normal; }
+@font-face { font-family:'Montserrat'; src:url('Montserrat/Montserrat-SemiBoldItalic.ttf') format('truetype'); font-weight:600; font-style:italic; }
+@font-face { font-family:'Montserrat'; src:url('Montserrat/Montserrat-Bold.ttf') format('truetype'); font-weight:700; font-style:normal; }
+@font-face { font-family:'Montserrat'; src:url('Montserrat/Montserrat-BoldItalic.ttf') format('truetype'); font-weight:700; font-style:italic; }
+@font-face { font-family:'Montserrat'; src:url('Montserrat/Montserrat-ExtraBold.ttf') format('truetype'); font-weight:800; font-style:normal; }
+@font-face { font-family:'Montserrat'; src:url('Montserrat/Montserrat-ExtraBoldItalic.ttf') format('truetype'); font-weight:800; font-style:italic; }
+@font-face { font-family:'Montserrat'; src:url('Montserrat/Montserrat-Black.ttf') format('truetype'); font-weight:900; font-style:normal; }
+@font-face { font-family:'Montserrat'; src:url('Montserrat/Montserrat-BlackItalic.ttf') format('truetype'); font-weight:900; font-style:italic; }
+
+/* Microgramma (Scheme B) */
+@font-face { font-family:'Microgramma'; src:url('microgramma%20normal.ttf') format('truetype'); font-weight:400; font-style:normal; }
+
+/* Eurostile (Scheme C) */
+@font-face { font-family:'Eurostile'; src:url('Eurostile/eurostile-extended-regular-italic.otf') format('opentype'); font-weight:400; font-style:italic; }
+@font-face { font-family:'Eurostile'; src:url('Eurostile/eurostile-extended-medium.otf') format('opentype'); font-weight:500; font-style:normal; }
+@font-face { font-family:'Eurostile'; src:url('Eurostile/Eurostile-LT-Extended-2-9.ttf') format('truetype'); font-weight:600; font-style:normal; }
+@font-face { font-family:'Eurostile'; src:url('Eurostile/Eurostile-LT-Bold-Extended-2-3.ttf') format('truetype'); font-weight:700; font-style:normal; }
+
+/* Goldman (Scheme D) */
+@font-face { font-family:'Goldman'; src:url('Goldman/Goldman-Regular.ttf') format('truetype'); font-weight:400; font-style:normal; }
+@font-face { font-family:'Goldman'; src:url('Goldman/Goldman-Bold.ttf') format('truetype'); font-weight:700; font-style:normal; }
+
+/* ========== CSS Custom Properties ========== */
+:root {
+  --heading-font: 'Montserrat', sans-serif;
+  --body-font: 'Montserrat', sans-serif;
+  --primary-orange: #f9610d;
+  --primary-dark: #0d1117;
+  --primary-navy: #161b22;
+  --text-white: #ffffff;
+  --text-dark: #1a1a1a;
+  --text-body: #333333;
+  --text-gray: #707070;
+  --text-light-gray: #999999;
+  --card-bg: #ffffff;
+  --card-border: #e0e0e0;
+  --border-light: #e5e5e5;
+  --section-bg-light: #f8f9fa;
+  --section-bg-white: #ffffff;
+  --section-bg-alt: #f0f2f5;
+}
+
+/* ========== RESET ========== */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body {
+  font-family: var(--body-font);
+  font-size: 16px;
+  line-height: 1.6;
+  color: var(--text-body);
+  background: #fff;
+  -webkit-font-smoothing: antialiased;
+}
+img { max-width: 100%; display: block; }
+a { text-decoration: none; color: inherit; }
+ul { list-style: none; }
+
+/* ========== COMPARISON TOOLBAR ========== */
+.comparison-toolbar {
+  position: sticky;
+  top: 0;
+  z-index: 10000;
+  background: #1a1a2e;
+  padding: 12px 24px;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  flex-wrap: wrap;
+  border-bottom: 2px solid #333;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.4);
+}
+.comparison-toolbar .toolbar-title {
+  color: #fff;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 14px;
+  font-weight: 700;
+  margin-right: 8px;
+  white-space: nowrap;
+}
+.comparison-toolbar .scheme-btn {
+  padding: 8px 20px;
+  border: 2px solid #555;
+  background: #2a2a3e;
+  color: #ccc;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  border-radius: 6px;
+  transition: all 0.2s;
+  white-space: nowrap;
+}
+.comparison-toolbar .scheme-btn:hover {
+  background: #3a3a5e;
+  border-color: #777;
+}
+.comparison-toolbar .scheme-btn.active {
+  background: var(--primary-orange);
+  border-color: var(--primary-orange);
+  color: #fff;
+}
+.comparison-toolbar .scheme-btn .scheme-label {
+  display: block;
+  font-size: 10px;
+  opacity: 0.7;
+  font-weight: 400;
+}
+.comparison-toolbar .edit-hint {
+  color: #888;
+  font-size: 12px;
+  margin-left: auto;
+}
+
+/* ========== HEADER / NAV (always dark) ========== */
+.site-header {
+  position: sticky;
+  top: 72px;
+  z-index: 999;
+  background: var(--primary-navy);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 40px;
+  height: 80px;
+  border-bottom: 1px solid rgba(255,255,255,0.08);
+}
+.header-logo {
+  height: 45px;
+  display: flex;
+  align-items: center;
+}
+.header-logo img {
+  height: 45px;
+  width: auto;
+  display: none;
+}
+/* Show the right logo per scheme */
+body.scheme-1 .header-logo .logo-a { display: block; }
+body.scheme-2 .header-logo .logo-b { display: block; }
+body.scheme-3 .header-logo .logo-c { display: block; }
+body.scheme-4 .header-logo .logo-d { display: block; }
+
+.main-nav { display: flex; align-items: center; gap: 32px; }
+.main-nav a {
+  font-family: var(--body-font);
+  font-size: 15px;
+  font-weight: 500;
+  color: rgba(255,255,255,0.85);
+  transition: color 0.2s;
+}
+.main-nav a:hover { color: var(--primary-orange); }
+
+.btn-lets-talk {
+  display: inline-flex;
+  align-items: center;
+  padding: 10px 24px;
+  background: transparent;
+  border: 2px solid var(--primary-orange);
+  color: var(--primary-orange);
+  font-family: var(--heading-font);
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: 1px;
+  cursor: pointer;
+  border-radius: 2px;
+  transition: background 0.2s, color 0.2s;
+}
+.btn-lets-talk:hover { background: var(--primary-orange); color: #fff; }
+
+/* ========== HERO (always dark) ========== */
+.hero {
+  position: relative;
+  height: 85vh;
+  min-height: 650px;
+  display: flex;
+  align-items: center;
+  background: var(--primary-dark);
+  overflow: hidden;
+}
+.hero-bg {
+  position: absolute;
+  inset: 0;
+  background: url('https://static.wixstatic.com/media/699a79_fc2ec1dafaaf4ccfa40b9c6a038bc88cf000.jpg/v1/fill/w_1440,h_800,al_c,q_85,enc_avif,quality_auto/699a79_fc2ec1dafaaf4ccfa40b9c6a038bc88cf000.jpg') center/cover no-repeat;
+  opacity: 0.45;
+  z-index: 0;
+}
+.hero-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(13,17,23,0.85) 0%, rgba(13,17,23,0.7) 100%);
+  z-index: 1;
+}
+.hero-content {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 60px 40px;
+}
+.hero-title-group { margin-bottom: 40px; }
+.hero-title {
+  font-family: var(--heading-font);
+  font-size: 72px;
+  font-weight: 800;
+  color: var(--text-white);
+  line-height: 1.05;
+  margin-bottom: 8px;
+  text-transform: uppercase;
+}
+.hero-subtitle {
+  font-family: var(--heading-font);
+  font-size: 64px;
+  font-weight: 700;
+  color: var(--primary-orange);
+  line-height: 1.05;
+  text-transform: uppercase;
+}
+.hero-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 0;
+  margin-top: 60px;
+  border-top: 1px solid rgba(255,255,255,0.15);
+  padding-top: 30px;
+}
+.hero-grid-item {
+  padding: 0 30px 0 0;
+  border-right: 1px solid rgba(255,255,255,0.1);
+}
+.hero-grid-item:last-child { border-right: none; }
+.hero-grid-num {
+  font-family: var(--heading-font);
+  font-size: 48px;
+  font-weight: 700;
+  color: var(--primary-orange);
+  display: inline;
+}
+.hero-grid-title {
+  font-family: var(--heading-font);
+  font-size: 22px;
+  font-weight: 700;
+  color: var(--text-white);
+  display: inline;
+  margin-left: 12px;
+  text-transform: uppercase;
+}
+.hero-grid-desc {
+  font-family: var(--body-font);
+  font-size: 16px;
+  color: rgba(255,255,255,0.6);
+  margin-top: 8px;
+}
+.hero-btn-row {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 50px;
+}
+.btn-discuss {
+  display: inline-flex;
+  align-items: center;
+  padding: 14px 36px;
+  background: var(--primary-orange);
+  color: #fff;
+  font-family: var(--heading-font);
+  font-size: 15px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  border: none;
+  cursor: pointer;
+  border-radius: 2px;
+  text-transform: uppercase;
+  transition: filter 0.2s;
+}
+.btn-discuss:hover { filter: brightness(1.1); }
+
+/* ========== TICKER (always dark) ========== */
+.ticker {
+  background: var(--primary-dark);
+  padding: 20px 0;
+  overflow: hidden;
+  border-top: 1px solid rgba(255,255,255,0.05);
+  border-bottom: 1px solid rgba(255,255,255,0.05);
+}
+.ticker-track {
+  display: flex;
+  gap: 32px;
+  justify-content: center;
+  white-space: nowrap;
+}
+.ticker-item {
+  font-family: var(--heading-font);
+  font-size: 14px;
+  font-weight: 500;
+  color: rgba(255,255,255,0.35);
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+.ticker-sep { color: rgba(255,255,255,0.15); }
+
+/* ========== SECTION TITLES & LABELS ========== */
+.section-label {
+  font-family: var(--heading-font);
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: 2px;
+  color: var(--primary-orange);
+  margin-bottom: 8px;
+}
+.section-label span { color: var(--text-gray); }
+.section-label-light span { color: rgba(255,255,255,0.5); }
+
+/* ========== WHAT WE DO (light bg) ========== */
+.section-what-we-do {
+  display: flex;
+  background: var(--section-bg-white);
+  min-height: 700px;
+}
+.what-we-do-left {
+  width: 50%;
+  background: url('https://static.wixstatic.com/media/699a79_84063467c97f4ea884e995437b65bcfb~mv2.jpg/v1/fill/w_720,h_827,al_c,q_85,enc_avif,quality_auto/699a79_84063467c97f4ea884e995437b65bcfb~mv2.jpg') center/cover no-repeat;
+  display: flex;
+  align-items: flex-start;
+  padding: 80px 60px;
+  position: relative;
+}
+.what-we-do-left::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: rgba(13,17,23,0.5);
+}
+.what-we-do-left .section-label {
+  position: relative;
+  z-index: 1;
+}
+.what-we-do-left .section-label span { color: rgba(255,255,255,0.6); }
+.what-we-do-right {
+  width: 50%;
+  padding: 80px 60px;
+}
+.what-we-do-right h2 {
+  font-family: var(--heading-font);
+  font-size: 42px;
+  font-weight: 700;
+  color: var(--text-dark);
+  line-height: 1.15;
+  margin-bottom: 12px;
+}
+.what-we-do-right > p {
+  font-family: var(--body-font);
+  font-size: 16px;
+  color: var(--text-gray);
+  margin-bottom: 40px;
+}
+
+/* Service cards (light theme) */
+.service-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 30px 24px;
+}
+.service-card {
+  background: var(--card-bg);
+  border: 1px solid var(--card-border);
+  border-radius: 4px;
+  overflow: hidden;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+}
+.service-card img {
+  width: 100%;
+  height: 140px;
+  object-fit: cover;
+}
+.service-card-body {
+  padding: 16px 20px 20px;
+}
+.service-card h4 {
+  font-family: var(--heading-font);
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--text-dark);
+  margin-bottom: 4px;
+}
+.service-card .num {
+  font-family: var(--heading-font);
+  font-size: 12px;
+  color: var(--primary-orange);
+  font-weight: 700;
+}
+
+/* ========== SCALE-UP MANUFACTURING (light alt bg) ========== */
+.section-scale-up {
+  display: flex;
+  background: var(--section-bg-light);
+  min-height: 700px;
+}
+.scale-up-left {
+  width: 50%;
+  padding: 80px 60px;
+}
+.scale-up-left h2 {
+  font-family: var(--heading-font);
+  font-size: 42px;
+  font-weight: 700;
+  color: var(--text-dark);
+  line-height: 1.15;
+}
+.scale-up-left > p {
+  font-family: var(--body-font);
+  font-size: 16px;
+  color: var(--text-gray);
+  margin: 16px 0 30px;
+  max-width: 380px;
+}
+.scale-up-right {
+  width: 50%;
+  background: url('https://static.wixstatic.com/media/699a79_453cf37436e1482db2bf35e112efdea2~mv2.png/v1/fill/w_720,h_791,al_c,q_90,enc_avif,quality_auto/699a79_453cf37436e1482db2bf35e112efdea2~mv2.png') center/cover no-repeat;
+}
+
+.btn-see-all {
+  display: inline-flex;
+  padding: 12px 30px;
+  background: transparent;
+  border: 2px solid var(--primary-orange);
+  color: var(--primary-orange);
+  font-family: var(--heading-font);
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: 1px;
+  cursor: pointer;
+  border-radius: 2px;
+  margin-top: 30px;
+}
+.btn-see-all:hover { background: var(--primary-orange); color: #fff; }
+
+/* ========== ASSEMBLY & AUTOMATION (white bg) ========== */
+.section-assembly {
+  display: flex;
+  background: var(--section-bg-white);
+  min-height: 700px;
+}
+.assembly-left {
+  width: 50%;
+  background: url('https://static.wixstatic.com/media/699a79_592442b2d49a43e2be6b5fe848bc6eee~mv2.png/v1/fill/w_720,h_700,al_c,q_90,enc_avif,quality_auto/699a79_592442b2d49a43e2be6b5fe848bc6eee~mv2.png') center/cover no-repeat;
+}
+.assembly-right {
+  width: 50%;
+  padding: 80px 60px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.assembly-right h2 {
+  font-family: var(--heading-font);
+  font-size: 42px;
+  font-weight: 700;
+  color: var(--text-dark);
+  line-height: 1.15;
+}
+.assembly-right > p {
+  font-family: var(--body-font);
+  font-size: 16px;
+  color: var(--text-gray);
+  margin: 16px 0 30px;
+  max-width: 400px;
+}
+
+/* ========== WHO WE SERVE (light alt bg) ========== */
+.section-who-we-serve {
+  background: var(--section-bg-light);
+  padding: 80px 60px;
+  text-align: center;
+}
+.section-who-we-serve h2 {
+  font-family: var(--heading-font);
+  font-size: 42px;
+  font-weight: 700;
+  color: var(--text-dark);
+  margin-bottom: 12px;
+}
+.section-who-we-serve > p {
+  font-family: var(--body-font);
+  font-size: 16px;
+  color: var(--text-gray);
+  max-width: 600px;
+  margin: 0 auto 50px;
+}
+.industry-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2px;
+  background: #ddd;
+  border-radius: 8px;
+  overflow: hidden;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+.industry-col {
+  background: var(--section-bg-white);
+  padding: 36px 28px;
+  text-align: left;
+}
+.industry-col h4 {
+  font-family: var(--heading-font);
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--text-dark);
+  margin-bottom: 18px;
+  line-height: 1.3;
+}
+.industry-col ul li {
+  font-family: var(--body-font);
+  font-size: 14px;
+  color: var(--text-gray);
+  padding: 7px 0;
+  padding-left: 18px;
+  position: relative;
+}
+.industry-col ul li::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 15px;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--primary-orange);
+}
+
+/* ========== WHY CHOOSE HICOMP (always dark) ========== */
+.section-why {
+  display: flex;
+  background: var(--primary-dark);
+  min-height: 700px;
+}
+.why-left {
+  width: 50%;
+  background: url('https://static.wixstatic.com/media/c837a6_3a4f054db4424af1b034f96ddd7b691a~mv2.jpg/v1/fill/w_720,h_839,al_c,q_80,enc_avif,quality_auto/c837a6_3a4f054db4424af1b034f96ddd7b691a~mv2.jpg') center/cover no-repeat;
+}
+.why-right {
+  width: 50%;
+  padding: 70px 60px;
+}
+.why-right .section-label span { color: var(--text-white); }
+.pillars-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 40px 30px;
+  margin-top: 40px;
+}
+.pillar-item h3 {
+  font-family: var(--heading-font);
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--text-white);
+  margin-bottom: 8px;
+}
+.pillar-item p {
+  font-family: var(--body-font);
+  font-size: 14px;
+  color: rgba(255,255,255,0.5);
+}
+.stats-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 40px 30px;
+  margin-top: 50px;
+  padding-top: 40px;
+  border-top: 1px solid rgba(255,255,255,0.08);
+}
+.stat-item .stat-num {
+  font-family: var(--heading-font);
+  font-size: 48px;
+  font-weight: 800;
+  color: var(--primary-orange);
+  line-height: 1;
+}
+.stat-item .stat-label {
+  font-family: var(--body-font);
+  font-size: 14px;
+  color: rgba(255,255,255,0.45);
+  margin-top: 6px;
+}
+
+/* ========== CUSTOMERS (light bg) ========== */
+.section-customers {
+  background: var(--section-bg-white);
+  padding: 60px 60px;
+  text-align: center;
+}
+.section-customers h2 {
+  font-family: var(--heading-font);
+  font-size: 36px;
+  font-weight: 700;
+  color: var(--text-dark);
+  margin-bottom: 40px;
+}
+.customer-logos {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 60px;
+  flex-wrap: wrap;
+}
+.customer-logos img {
+  height: 50px;
+  opacity: 0.5;
+  filter: grayscale(1);
+  transition: opacity 0.2s, filter 0.2s;
+}
+.customer-logos img:hover { opacity: 0.8; filter: none; }
+
+/* ========== TESTIMONIALS (dark section, kept as-is) ========== */
+.section-testimonials {
+  background: var(--primary-dark);
+  padding: 80px 60px;
+}
+.testimonial-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 40px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+.testimonial-card {
+  background: var(--primary-navy);
+  padding: 36px 30px;
+  border-radius: 6px;
+}
+.testimonial-card blockquote {
+  font-family: var(--heading-font);
+  font-size: 15px;
+  color: rgba(255,255,255,0.7);
+  line-height: 1.7;
+  margin-bottom: 24px;
+  font-style: italic;
+}
+.testimonial-card .author {
+  font-family: var(--heading-font);
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--text-white);
+}
+
+/* ========== FAQ (light bg) ========== */
+.section-faq {
+  background: var(--section-bg-white);
+  padding: 80px 60px;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+.section-faq h2 {
+  font-family: var(--heading-font);
+  font-size: 60px;
+  font-weight: 700;
+  color: var(--text-dark);
+  margin-bottom: 40px;
+}
+.faq-tabs {
+  display: flex;
+  gap: 0;
+  margin-bottom: 30px;
+  border-bottom: 1px solid var(--border-light);
+}
+.faq-tab {
+  padding: 14px 30px;
+  font-family: var(--heading-font);
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  color: var(--text-gray);
+  background: none;
+  border: none;
+  border-bottom: 3px solid transparent;
+  transition: color 0.2s, border-color 0.2s;
+}
+.faq-tab.active {
+  color: var(--text-dark);
+  border-bottom-color: var(--primary-orange);
+}
+.faq-tab:hover { color: var(--text-dark); }
+.faq-list { display: block; }
+.faq-item {
+  padding: 16px 0;
+  border-bottom: 1px solid var(--border-light);
+  cursor: pointer;
+}
+.faq-q {
+  font-family: var(--heading-font);
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--text-dark);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.faq-q::after {
+  content: '+';
+  font-size: 22px;
+  color: var(--primary-orange);
+  font-weight: 400;
+}
+.faq-a {
+  font-family: var(--body-font);
+  font-size: 14px;
+  color: var(--text-gray);
+  margin-top: 10px;
+  display: none;
+}
+.faq-item.open .faq-a { display: block; }
+.faq-item.open .faq-q::after { content: '−'; }
+
+/* ========== CONTACT / FOOTER (always dark) ========== */
+.section-contact {
+  background: var(--primary-dark);
+  display: flex;
+  min-height: 600px;
+}
+.contact-info {
+  width: 33.33%;
+  padding: 80px 60px;
+}
+.contact-info h3 {
+  font-family: var(--heading-font);
+  font-size: 28px;
+  font-weight: 700;
+  color: var(--text-white);
+  margin-bottom: 30px;
+}
+.contact-info p {
+  font-family: var(--body-font);
+  font-size: 18px;
+  color: rgba(255,255,255,0.6);
+  margin-bottom: 16px;
+}
+.contact-form-col {
+  width: 33.33%;
+  padding: 80px 40px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.contact-form-col h3 {
+  font-family: var(--heading-font);
+  font-size: 28px;
+  font-weight: 700;
+  color: var(--text-white);
+  margin-bottom: 8px;
+}
+.contact-form-col .subtitle {
+  font-family: var(--body-font);
+  font-size: 14px;
+  color: rgba(255,255,255,0.4);
+  margin-bottom: 28px;
+}
+.form-col {
+  width: 33.33%;
+  padding: 80px 60px 80px 0;
+}
+.form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+  margin-bottom: 16px;
+}
+.form-field { margin-bottom: 16px; }
+.form-field label {
+  display: block;
+  font-family: var(--body-font);
+  font-size: 13px;
+  color: rgba(255,255,255,0.5);
+  margin-bottom: 6px;
+}
+.form-field input,
+.form-field textarea {
+  width: 100%;
+  padding: 10px 0;
+  background: transparent;
+  border: none;
+  border-bottom: 1px solid rgba(255,255,255,0.2);
+  font-family: var(--body-font);
+  font-size: 15px;
+  color: var(--text-white);
+  outline: none;
+}
+.form-field input:focus,
+.form-field textarea:focus { border-bottom-color: var(--primary-orange); }
+.form-field textarea { resize: vertical; min-height: 80px; }
+.btn-submit {
+  display: inline-flex;
+  padding: 14px 40px;
+  background: var(--primary-orange);
+  color: #fff;
+  font-family: var(--heading-font);
+  font-size: 14px;
+  font-weight: 700;
+  border: none;
+  cursor: pointer;
+  letter-spacing: 1px;
+  border-radius: 2px;
+  text-transform: uppercase;
+  width: 100%;
+  justify-content: center;
+}
+.btn-submit:hover { filter: brightness(1.1); }
+
+/* ========== COPYRIGHT (always dark) ========== */
+.copyright {
+  background: var(--primary-dark);
+  text-align: center;
+  padding: 20px;
+  border-top: 1px solid rgba(255,255,255,0.06);
+}
+.copyright p {
+  font-family: var(--body-font);
+  font-size: 12px;
+  color: rgba(255,255,255,0.3);
+}
+
+/* ========== SCHEME-SPECIFIC FONT OVERRIDES ========== */
+
+/* Scheme A — Montserrat (default, already set in :root) */
+body.scheme-1 {
+  --heading-font: 'Montserrat', sans-serif;
+  --body-font: 'Montserrat', sans-serif;
+}
+
+/* Scheme B — Microgramma */
+body.scheme-2 {
+  --heading-font: 'Microgramma', sans-serif;
+  --body-font: 'Microgramma', sans-serif;
+}
+
+/* Scheme C — Eurostile */
+body.scheme-3 {
+  --heading-font: 'Eurostile', sans-serif;
+  --body-font: 'Eurostile', sans-serif;
+}
+
+/* Scheme D — Goldman */
+body.scheme-4 {
+  --heading-font: 'Goldman', sans-serif;
+  --body-font: 'Goldman', sans-serif;
+}
+
+/* ========== EDITABLE HIGHLIGHTS ========== */
+.editable { position: relative; }
+.editable:hover { outline: 2px dashed var(--primary-orange); outline-offset: 4px; cursor: text; }
+
+/* ========== RESPONSIVE ========== */
+@media (max-width: 1024px) {
+  .what-we-do-right, .scale-up-left, .assembly-right, .why-right,
+  .what-we-do-left, .scale-up-right, .assembly-left, .why-left { width: 100%; }
+  .section-what-we-do, .section-scale-up, .section-assembly, .section-why { flex-direction: column; }
+  .hero-title { font-size: 48px; }
+  .hero-subtitle { font-size: 40px; }
+  .hero-grid { grid-template-columns: 1fr; gap: 20px; }
+  .hero-grid-item { border-right: none; border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 20px; }
+  .testimonial-grid { grid-template-columns: 1fr; }
+  .section-contact { flex-direction: column; }
+  .contact-info, .contact-form-col, .form-col { width: 100%; }
+  .industry-grid { grid-template-columns: 1fr; }
+}
+
+@media print {
+  .comparison-toolbar { display: none; }
+  .site-header { position: static; }
+}
+</style>
+</head>
+<body class="scheme-1">
+
+<!-- ===== COMPARISON TOOLBAR ===== -->
+<div class="comparison-toolbar">
+  <span class="toolbar-title">SCHEME:</span>
+  <button class="scheme-btn active" onclick="switchScheme(1)" id="btn-1">
+    Scheme A<span class="scheme-label">Montserrat + Logo A</span>
+  </button>
+  <button class="scheme-btn" onclick="switchScheme(2)" id="btn-2">
+    Scheme B<span class="scheme-label">Microgramma + Logo B</span>
+  </button>
+  <button class="scheme-btn" onclick="switchScheme(3)" id="btn-3">
+    Scheme C<span class="scheme-label">Eurostile + Logo C</span>
+  </button>
+  <button class="scheme-btn" onclick="switchScheme(4)" id="btn-4">
+    Scheme D<span class="scheme-label">Goldman + Logo D</span>
+  </button>
+  <span class="edit-hint">Click text to edit &bull; Edit fonts/logo in CSS</span>
+</div>
+
+<!-- ===== HEADER ===== -->
+<header class="site-header">
+  <div class="header-logo">
+    <img class="logo-a" src="Scheme A logo.png" alt="HiComp Logo A">
+    <img class="logo-b" src="Scheme B logo.png" alt="HiComp Logo B">
+    <img class="logo-c" src="Scheme C logo.png" alt="HiComp Logo C">
+    <img class="logo-d" src="Scheme D logo.png" alt="HiComp Logo D">
+  </div>
+  <nav class="main-nav">
+    <a href="#">About</a>
+    <a href="#">Mega Services</a>
+    <a href="#">Applications</a>
+    <a href="#">Materials</a>
+    <a href="#">Contact</a>
+  </nav>
+  <button class="btn-lets-talk">LET'S TALK</button>
+</header>
+
+<!-- ===== HERO ===== -->
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-overlay"></div>
+  <div class="hero-content">
+    <div class="hero-title-group">
+      <h1 class="hero-title editable" contenteditable="true">ONE-STOP PARTNER</h1>
+      <p class="hero-subtitle editable" contenteditable="true">FOR MICROFLUIDICS</p>
+    </div>
+    <div class="hero-grid">
+      <div class="hero-grid-item">
+        <div class="hero-grid-num">01</div>
+        <div class="hero-grid-title editable" contenteditable="true">EVERY STAGE</div>
+        <p class="hero-grid-desc editable" contenteditable="true">Design &middot; Prototype &middot; Scale</p>
+      </div>
+      <div class="hero-grid-item">
+        <div class="hero-grid-num">02</div>
+        <div class="hero-grid-title editable" contenteditable="true">EVERY MATERIAL</div>
+        <p class="hero-grid-desc editable" contenteditable="true">PDMS &middot; Polymer &middot; Silicon &middot; Glass</p>
+      </div>
+      <div class="hero-grid-item">
+        <div class="hero-grid-num">03</div>
+        <div class="hero-grid-title editable" contenteditable="true">EVERY APPLICATION</div>
+        <p class="hero-grid-desc editable" contenteditable="true">Diagnostics &middot; Therapeutics &middot; Medical Devices</p>
+      </div>
+    </div>
+    <div class="hero-btn-row">
+      <button class="btn-discuss">DISCUSS THE POSSIBILITIES</button>
+    </div>
+  </div>
+</section>
+
+<!-- ===== TICKER ===== -->
+<div class="ticker">
+  <div class="ticker-track">
+    <span class="ticker-item">MICROFLUIDICS</span><span class="ticker-sep">/</span>
+    <span class="ticker-item">MEMS</span><span class="ticker-sep">/</span>
+    <span class="ticker-item">PDMS</span><span class="ticker-sep">/</span>
+    <span class="ticker-item">INJECTION MOLDING</span><span class="ticker-sep">/</span>
+    <span class="ticker-item">CNC MACHINING</span><span class="ticker-sep">/</span>
+    <span class="ticker-item">3D PRINTING</span>
+  </div>
+</div>
+
+<!-- ===== WHAT WE DO ===== -->
+<section class="section-what-we-do">
+  <div class="what-we-do-left">
+    <div class="section-label">02 \ <span>WHAT WE DO</span></div>
+  </div>
+  <div class="what-we-do-right">
+    <h2 class="editable" contenteditable="true">DESIGN &amp; PROTOTYPING</h2>
+    <p class="editable" contenteditable="true">Accelerated development of custom microfluidic devices</p>
+    <div class="service-grid">
+      <div class="service-card">
+        <img src="https://static.wixstatic.com/media/699a79_6148dbc7b88b48df894a07089ce50d84~mv2.jpg/v1/crop/x_32,y_0,w_6976,h_4072/fill/w_320,h_180,al_c,q_80,usm_0.66_1.00_0.01,enc_avif,quality_auto/Custom%20Product%20Design.jpg" alt="Custom Product Design">
+        <div class="service-card-body">
+          <span class="num">01</span>
+          <h4 class="editable" contenteditable="true">CUSTOM PRODUCT DESIGN</h4>
+        </div>
+      </div>
+      <div class="service-card">
+        <img src="https://static.wixstatic.com/media/699a79_698c6799dd2e44e59f541a83c0082759~mv2.jpg/v1/crop/x_0,y_333,w_4000,h_2335/fill/w_320,h_180,al_c,q_80,usm_0.66_1.00_0.01,enc_avif,quality_auto/Precision%20CNC%20Machining.jpg" alt="Precision CNC Machining">
+        <div class="service-card-body">
+          <span class="num">02</span>
+          <h4 class="editable" contenteditable="true">PRECISION CNC MACHINING</h4>
+        </div>
+      </div>
+      <div class="service-card">
+        <img src="https://static.wixstatic.com/media/699a79_a0c8912520a2412584772ea346717423~mv2.png/v1/crop/x_0,y_73,w_1024,h_598/fill/w_320,h_180,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/Rapid%203D%20Printing.png" alt="Rapid 3D Printing">
+        <div class="service-card-body">
+          <span class="num">03</span>
+          <h4 class="editable" contenteditable="true">RAPID 3D PRINTING</h4>
+        </div>
+      </div>
+      <div class="service-card">
+        <img src="https://static.wixstatic.com/media/699a79_0432b36f35d342e6bdfaf4d6ec0e7564~mv2.jpg/v1/crop/x_983,y_1112,w_5296,h_3083/fill/w_320,h_180,al_c,q_80,usm_0.66_1.00_0.01,enc_avif,quality_auto/On-demand%20PDMS%20Fabrication.jpg" alt="On-demand PDMS Fabrication">
+        <div class="service-card-body">
+          <span class="num">04</span>
+          <h4 class="editable" contenteditable="true">PDMS - RAPID ITERATION</h4>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== SCALE-UP MANUFACTURING ===== -->
+<section class="section-scale-up">
+  <div class="scale-up-left">
+    <div class="section-label">02 \ <span>WHAT WE DO</span></div>
+    <h2 class="editable" contenteditable="true">SCALE-UP<br>MANUFACTURING</h2>
+    <p class="editable" contenteditable="true">High-Volume cleanroom production of PDMS, injection-molding and MEMS microfluidics</p>
+    <div class="service-grid">
+      <div class="service-card">
+        <img src="https://static.wixstatic.com/media/699a79_6148dbc7b88b48df894a07089ce50d84~mv2.jpg/v1/crop/x_32,y_0,w_6976,h_4072/fill/w_320,h_180,al_c,q_80,usm_0.66_1.00_0.01,enc_avif,quality_auto/Custom%20Product%20Design.jpg" alt="Service">
+        <div class="service-card-body">
+          <span class="num">01</span>
+          <h4 class="editable" contenteditable="true">CUSTOM PRODUCT DESIGN</h4>
+        </div>
+      </div>
+      <div class="service-card">
+        <img src="https://static.wixstatic.com/media/699a79_698c6799dd2e44e59f541a83c0082759~mv2.jpg/v1/crop/x_0,y_333,w_4000,h_2335/fill/w_320,h_180,al_c,q_80,usm_0.66_1.00_0.01,enc_avif,quality_auto/Precision%20CNC%20Machining.jpg" alt="Service">
+        <div class="service-card-body">
+          <span class="num">02</span>
+          <h4 class="editable" contenteditable="true">PRECISION CNC MACHINING</h4>
+        </div>
+      </div>
+      <div class="service-card">
+        <img src="https://static.wixstatic.com/media/699a79_a0c8912520a2412584772ea346717423~mv2.png/v1/crop/x_0,y_73,w_1024,h_598/fill/w_320,h_180,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/Rapid%203D%20Printing.png" alt="Service">
+        <div class="service-card-body">
+          <span class="num">03</span>
+          <h4 class="editable" contenteditable="true">RAPID 3D PRINTING</h4>
+        </div>
+      </div>
+      <div class="service-card">
+        <img src="https://static.wixstatic.com/media/699a79_0432b36f35d342e6bdfaf4d6ec0e7564~mv2.jpg/v1/crop/x_983,y_1112,w_5296,h_3083/fill/w_320,h_180,al_c,q_80,usm_0.66_1.00_0.01,enc_avif,quality_auto/On-demand%20PDMS%20Fabrication.jpg" alt="Service">
+        <div class="service-card-body">
+          <span class="num">04</span>
+          <h4 class="editable" contenteditable="true">PDMS - RAPID ITERATION</h4>
+        </div>
+      </div>
+    </div>
+    <button class="btn-see-all">SEE ALL</button>
+  </div>
+  <div class="scale-up-right"></div>
+</section>
+
+<!-- ===== ASSEMBLY & AUTOMATION ===== -->
+<section class="section-assembly">
+  <div class="assembly-left"></div>
+  <div class="assembly-right">
+    <div class="section-label">02 \ <span>WHAT WE DO</span></div>
+    <h2 class="editable" contenteditable="true">ASSEMBLY &amp;<br>AUTOMATION</h2>
+    <p class="editable" contenteditable="true">Accelerated development of custom microfluidic devices</p>
+    <div class="service-grid">
+      <div class="service-card">
+        <img src="https://static.wixstatic.com/media/699a79_6148dbc7b88b48df894a07089ce50d84~mv2.jpg/v1/crop/x_32,y_0,w_6976,h_4072/fill/w_320,h_180,al_c,q_80,usm_0.66_1.00_0.01,enc_avif,quality_auto/Custom%20Product%20Design.jpg" alt="Service">
+        <div class="service-card-body">
+          <span class="num">01</span>
+          <h4 class="editable" contenteditable="true">CUSTOM PRODUCT DESIGN</h4>
+        </div>
+      </div>
+      <div class="service-card">
+        <img src="https://static.wixstatic.com/media/699a79_698c6799dd2e44e59f541a83c0082759~mv2.jpg/v1/crop/x_0,y_333,w_4000,h_2335/fill/w_320,h_180,al_c,q_80,usm_0.66_1.00_0.01,enc_avif,quality_auto/Precision%20CNC%20Machining.jpg" alt="Service">
+        <div class="service-card-body">
+          <span class="num">02</span>
+          <h4 class="editable" contenteditable="true">PRECISION CNC MACHINING</h4>
+        </div>
+      </div>
+      <div class="service-card">
+        <img src="https://static.wixstatic.com/media/699a79_a0c8912520a2412584772ea346717423~mv2.png/v1/crop/x_0,y_73,w_1024,h_598/fill/w_320,h_180,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/Rapid%203D%20Printing.png" alt="Service">
+        <div class="service-card-body">
+          <span class="num">03</span>
+          <h4 class="editable" contenteditable="true">RAPID 3D PRINTING</h4>
+        </div>
+      </div>
+      <div class="service-card">
+        <img src="https://static.wixstatic.com/media/699a79_0432b36f35d342e6bdfaf4d6ec0e7564~mv2.jpg/v1/crop/x_983,y_1112,w_5296,h_3083/fill/w_320,h_180,al_c,q_80,usm_0.66_1.00_0.01,enc_avif,quality_auto/On-demand%20PDMS%20Fabrication.jpg" alt="Service">
+        <div class="service-card-body">
+          <span class="num">04</span>
+          <h4 class="editable" contenteditable="true">PDMS - RAPID ITERATION</h4>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== WHO WE SERVE ===== -->
+<section class="section-who-we-serve">
+  <div class="section-label">03 \ <span>WHO WE SERVE</span></div>
+  <h2 class="editable" contenteditable="true">INDUSTRIES WE SERVE</h2>
+  <p class="editable" contenteditable="true">From at-home tests to organ-on-chip — HiComp's chips ship inside the products that move medicine forward.</p>
+  <div class="industry-grid">
+    <div class="industry-col">
+      <h4 class="editable" contenteditable="true">IN-VITRO DIAGNOSTICS (IVD)</h4>
+      <ul>
+        <li class="editable" contenteditable="true">At-Home &amp; POC Design</li>
+        <li class="editable" contenteditable="true">NGS &amp; Genomics Chip</li>
+        <li class="editable" contenteditable="true">Liquid Biopsy &amp; EVs</li>
+        <li class="editable" contenteditable="true">Cell Counting &amp; Sorting</li>
+        <li class="editable" contenteditable="true">In Vitro Fertilization (IVF)</li>
+      </ul>
+    </div>
+    <div class="industry-col">
+      <h4 class="editable" contenteditable="true">DRUG DISCOVERY &amp; BIOPHARMA</h4>
+      <ul>
+        <li class="editable" contenteditable="true">Organ-on-a-Chip</li>
+        <li class="editable" contenteditable="true">Organoids &amp; 3D Culture</li>
+        <li class="editable" contenteditable="true">Human Tissue Models</li>
+        <li class="editable" contenteditable="true">Drug Delivery</li>
+        <li class="editable" contenteditable="true">Custom Microplates</li>
+      </ul>
+    </div>
+    <div class="industry-col">
+      <h4 class="editable" contenteditable="true">CLINICAL &amp; MEDICAL DEVICES</h4>
+      <ul>
+        <li class="editable" contenteditable="true">Brain-Computer Interface (BCI)</li>
+        <li class="editable" contenteditable="true">Wearable Devices</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ===== WHY CHOOSE HICOMP ===== -->
+<section class="section-why">
+  <div class="why-left"></div>
+  <div class="why-right">
+    <div class="section-label">04 \ <span>4-S-Pillars</span></div>
+    <div class="pillars-grid">
+      <div class="pillar-item">
+        <h3 class="editable" contenteditable="true">SPEED</h3>
+        <p class="editable" contenteditable="true">Prototype in days, iterate in weeks</p>
+      </div>
+      <div class="pillar-item">
+        <h3 class="editable" contenteditable="true">SINGLE-SOURCE</h3>
+        <p class="editable" contenteditable="true">From 10 chips to 10 million</p>
+      </div>
+      <div class="pillar-item">
+        <h3 class="editable" contenteditable="true">SCALE</h3>
+        <p class="editable" contenteditable="true">From 10 chips to 10 million</p>
+      </div>
+      <div class="pillar-item">
+        <h3 class="editable" contenteditable="true">SAVINGS</h3>
+        <p class="editable" contenteditable="true">Save you time and save money</p>
+      </div>
+    </div>
+    <div class="stats-row">
+      <div class="stat-item">
+        <div class="stat-num editable" contenteditable="true">20M+</div>
+        <div class="stat-label editable" contenteditable="true">CHIPS PRODUCED</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-num editable" contenteditable="true">500+</div>
+        <div class="stat-label editable" contenteditable="true">PROJECTS DELIVERED</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-num editable" contenteditable="true">1M+</div>
+        <div class="stat-label editable" contenteditable="true">PDM CHIPS</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-num editable" contenteditable="true">CLASS 10k</div>
+        <div class="stat-label editable" contenteditable="true">CLEANROOM</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== CUSTOMERS ===== -->
+<section class="section-customers">
+  <h2 class="editable" contenteditable="true">Our Customers</h2>
+  <div class="customer-logos">
+    <img src="https://static.wixstatic.com/media/699a79_623554bfcddd49dbae88e542d60f886f~mv2.png/v1/crop/x_9,y_16,w_430,h_98/fill/w_208,h_45,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/image18_edited.png" alt="Partner">
+    <img src="https://static.wixstatic.com/media/699a79_e19e3481a9174e76a4311ef3c339005a~mv2.png/v1/fill/w_165,h_57,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/image26.png" alt="Partner">
+    <img src="https://static.wixstatic.com/media/699a79_eac71361d85244cdbe0113cebc576d81~mv2.png/v1/crop/x_14,y_19,w_258,h_125/fill/w_147,h_71,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/image22_edited.png" alt="Partner">
+    <img src="https://static.wixstatic.com/media/699a79_4e5117f7208c41f4b74b89649c5d6e7c~mv2.png/v1/crop/x_46,y_13,w_298,h_108/fill/w_178,h_64,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/image21_edited.png" alt="Partner">
+    <img src="https://static.wixstatic.com/media/699a79_a07d6f8b2e8544db8b4f538f15e0bca6~mv2.png/v1/fill/w_196,h_45,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/image8_edited.png" alt="Partner">
+  </div>
+</section>
+
+<!-- ===== TESTIMONIALS ===== -->
+<section class="section-testimonials">
+  <div class="testimonial-grid">
+    <div class="testimonial-card">
+      <blockquote class="editable" contenteditable="true">"L. Chen has revolutionized the way we manage our operations. Their platform is a game-changer in the industry."</blockquote>
+      <p class="author editable" contenteditable="true">John Doe, CEO at TechPro</p>
+    </div>
+    <div class="testimonial-card">
+      <blockquote class="editable" contenteditable="true">"Efficient, user-friendly, and powerful. L. Chen's solutions have truly transformed our decision-making processes."</blockquote>
+      <p class="author editable" contenteditable="true">Alice Smith, COO at InnovateTech</p>
+    </div>
+    <div class="testimonial-card">
+      <blockquote class="editable" contenteditable="true">"An exceptional partner in our digital journey. L. Chen's support has been invaluable in our business growth."</blockquote>
+      <p class="author editable" contenteditable="true">David Brown, CTO at VisionarySolutions</p>
+    </div>
+  </div>
+</section>
+
+<!-- ===== FAQ ===== -->
+<section class="section-faq">
+  <h2 class="editable" contenteditable="true">FAQ</h2>
+  <div class="faq-tabs">
+    <button class="faq-tab active" onclick="switchFaqTab(0, this)">HOW TO WORK WITH US - PROCESS</button>
+    <button class="faq-tab" onclick="switchFaqTab(1, this)">CAPABILITIES AND SPECS</button>
+  </div>
+  <div class="faq-list" id="faq-list-process">
+    <div class="faq-item">
+      <div class="faq-q editable" contenteditable="true">How does the engagement start?</div>
+      <div class="faq-a editable" contenteditable="true">An FAQ section can be used to quickly answer common questions about your business like "Where do you ship to?", "What are your opening hours?" or "How can I book a service?"</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q editable" contenteditable="true">How do we handle revisions and design changes?</div>
+      <div class="faq-a editable" contenteditable="true">FAQs can be added to any page on your site or to your Wix mobile app, giving access to members on the go.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q editable" contenteditable="true">What's the typical timeline from CAD to first parts?</div>
+      <div class="faq-a editable" contenteditable="true">FAQs are a great way to help site visitors find quick answers to common questions about your business.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q editable" contenteditable="true">How do you handle our IP?</div>
+      <div class="faq-a editable" contenteditable="true">FAQs can be added to any page on your site or to your Wix mobile app, giving access to members on the go.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q editable" contenteditable="true">What does the quoting / proposal process look like?</div>
+      <div class="faq-a editable" contenteditable="true">FAQs can be added to any page on your site or to your Wix mobile app, giving access to members on the go.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q editable" contenteditable="true">Where do you manufacture — US or China?</div>
+      <div class="faq-a editable" contenteditable="true">FAQs can be added to any page on your site or to your Wix mobile app, giving access to members on the go.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q editable" contenteditable="true">What does ongoing partnership look like?</div>
+      <div class="faq-a editable" contenteditable="true">FAQs can be added to any page on your site or to your Wix mobile app, giving access to members on the go.</div>
+    </div>
+  </div>
+  <div class="faq-list" id="faq-list-specs" style="display:none;">
+    <div class="faq-item">
+      <div class="faq-q editable" contenteditable="true">What materials do you work with?</div>
+      <div class="faq-a editable" contenteditable="true">PDMS, polymer, silicon, glass, and various thermoplastics for injection molding.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q editable" contenteditable="true">What are your cleanroom capabilities?</div>
+      <div class="faq-a editable" contenteditable="true">Class 10k cleanroom for high-volume production.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q editable" contenteditable="true">What volume ranges do you support?</div>
+      <div class="faq-a editable" contenteditable="true">From 10 prototype chips to 10 million production units.</div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== CONTACT / FOOTER ===== -->
+<section class="section-contact">
+  <div class="contact-info">
+    <h3 class="editable" contenteditable="true">Contact</h3>
+    <p class="editable" contenteditable="true">123-456-7890</p>
+    <p class="editable" contenteditable="true">Info@mysite.com</p>
+    <p class="editable" contenteditable="true">500 Terry Francine St</p>
+    <p class="editable" contenteditable="true">San Francisco, CA 94158</p>
+  </div>
+  <div class="contact-form-col">
+    <h3 class="editable" contenteditable="true">Your microfluidic project starts here.</h3>
+    <p class="subtitle editable" contenteditable="true">Tell us about your project — typical response within 2 business day.</p>
+  </div>
+  <div class="form-col">
+    <div class="form-row">
+      <div class="form-field">
+        <label>First name*</label>
+        <input type="text" placeholder="">
+      </div>
+      <div class="form-field">
+        <label>Last name</label>
+        <input type="text" placeholder="">
+      </div>
+    </div>
+    <div class="form-field">
+      <label>Company name</label>
+      <input type="text" placeholder="">
+    </div>
+    <div class="form-field">
+      <label>Email*</label>
+      <input type="email" placeholder="">
+    </div>
+    <div class="form-field">
+      <label>Tell Us About Your Project</label>
+      <textarea placeholder=""></textarea>
+    </div>
+    <button class="btn-submit">Submit</button>
+  </div>
+</section>
+
+<!-- ===== COPYRIGHT ===== -->
+<div class="copyright">
+  <p class="editable" contenteditable="true">&copy; 2026 HiComp all rights reserved | Site Design by Dynamic Wave Consulting</p>
+</div>
+
+<!-- ===== JAVASCRIPT ===== -->
+<script>
+function switchScheme(num) {
+  document.body.className = 'scheme-' + num;
+  document.querySelectorAll('.scheme-btn').forEach(function(b) { b.classList.remove('active'); });
+  document.getElementById('btn-' + num).classList.add('active');
+  localStorage.setItem('hicomp-scheme', num);
+}
+
+(function() {
+  var saved = localStorage.getItem('hicomp-scheme');
+  if (saved) switchScheme(parseInt(saved));
+})();
+
+document.querySelectorAll('.faq-item').forEach(function(item) {
+  item.addEventListener('click', function() { this.classList.toggle('open'); });
+});
+
+function switchFaqTab(index, btn) {
+  document.querySelectorAll('.faq-tab').forEach(function(t) { t.classList.remove('active'); });
+  btn.classList.add('active');
+  document.getElementById('faq-list-process').style.display = index === 0 ? 'block' : 'none';
+  document.getElementById('faq-list-specs').style.display = index === 1 ? 'block' : 'none';
+}
+</script>
+
+</body>
+</html>
